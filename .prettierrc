@@ -1,0 +1,20 @@
+{
+  "eslintIntegration": true,
+  "printWidth": 100,
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": true,
+  "vueIndentScriptAndStyle": false,
+  "singleQuote": true,
+  "quoteProps": "as-needed", 
+  "bracketSpacing": true,
+  "trailingComma": "none",
+  "jsxBracketSameLine": false,
+  "jsxSingleQuote": false,
+  "arrowParens": "avoid",
+  "proseWrap": "never",
+  "requirePragma": false,
+  "insertPragma": false,
+  "htmlWhitespaceSensitivity": "strict",
+  "endOfLine": "auto"
+}

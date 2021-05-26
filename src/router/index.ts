@@ -1,26 +1,54 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import Home from "../views/Home.vue";
+/*
+ * @Description: 路由
+ * @Author: chenju
+ * @Date: 2021-05-19 13:36:26
+ * @LastEditors: chenju
+ * @LastEditTime: 2021-05-26 13:59:25
+ */
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
-const routes: Array<RouteRecordRaw> = [
+import ForegroundLayout from '@/layouts/foreground-layout/index.vue';
+import Home from '@/views/home/index.vue';
+import About from '@/views/about/index.vue';
+
+import NoFindPage from '@/views/404/index.vue';
+
+const routes: RouteRecordRaw[] = [
   {
-    path: "/",
-    name: "Home",
-    component: Home,
+    path: '/',
+    redirect: '/foreground/home'
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    path: '/foreground',
+    redirect: '/foreground/home',
+    component: ForegroundLayout,
+    children: [
+      {
+        path: 'home',
+        name: 'Home',
+        component: Home
+      },
+      {
+        path: 'about',
+        name: 'About',
+        component: About
+      }
+    ]
   },
+  {
+    path: '/404',
+    name: 'NoFindPage',
+    component: NoFindPage
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/404'
+  }
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes,
+  history: createWebHistory(),
+  routes
 });
 
 export default router;
